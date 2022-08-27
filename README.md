@@ -1,14 +1,14 @@
+# HelpfulReferencesAndDefaults
+
 # UW_ChWk06_ServerSideAPI-WeatherDashboard
 ## Overview
-```
-Build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS. Use the [OpenWeather One Call API](https://openweathermap.org/api/one-call-api) to retrieve weather data for cities. Read through the documentation for setup and usage instructions. Use `localStorage` to store any persistent data.
-```
+Developers are often tasked with retrieving data from another application's API and using it in the context of their own. Build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS. Use the [OpenWeather One Call API](https://openweathermap.org/api/one-call-api) to retrieve weather data for cities. Use `localStorage` to store any persistent data. 
 
 ### Link to Web App: 
 <!-- LINK TO DEPLOYMENT HERE -->
 
 ### App Preview:
-<!-- Replace with path to screenshot   ![My Password Generator Screenshot](./Assets/MyPasswordGeneratorScreenShot.PNG "My Password Generator Screenshot") -->
+<!-- Replace with path to screenshot   ![My Password Generator Screenshot](./Assets/Images/MyPasswordGeneratorScreenShot.PNG "My Password Generator Screenshot") -->
 
 ## Notes
 
@@ -38,13 +38,20 @@ WHEN I click on a city in the search history
 THEN I am again presented with current and future conditions for that city
 ```
 
-<!-- ## Resources Used 
+## Resources Used 
 
-Use this area to list referenced apis, etc -->
+### Helpful References
+- [Full-Stack Blog on how to use API keys](https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys)
+
+### Technology
+- [OpenWeather One Call API](https://openweathermap.org/api/one-call-api)
+- [Bootstrap Framework](https://getbootstrap.com/)
+- [jQuery Library](https://jquery.com/)
+
+<!-- ### Media -->
 
 
-<!-- 
-# 06 Server-Side APIs: Weather Dashboard
+<!-- # 06 Server-Side APIs: Weather Dashboard
 
 ## Your Task
 
@@ -144,5 +151,4 @@ You are required to submit BOTH of the following for review:
 
 - - -
 © 2022 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
-
--->
+  -->
