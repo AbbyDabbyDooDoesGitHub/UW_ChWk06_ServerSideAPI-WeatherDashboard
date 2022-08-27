@@ -1,3 +1,13 @@
+h1 {
+  background-color: rgb(21, 21, 131);
+  font-size: 40px;
+  color: aliceblue;
+  padding: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+
 /* Makes it so there's no underline under the hyperlink */
 /* a {
     text-decoration: none;
