@@ -1,10 +1,60 @@
 h1 {
   background-color: rgb(21, 21, 131);
-  font-size: 40px;
+  font-size: 35px;
   color: aliceblue;
-  padding: 20px;
+  padding: 15px;
   text-align: center;
+  font-weight: bolder;
+}
+
+
+.left-side-display {
+  width: 35vw;
+  padding: 10px;
+
+  /* background-color: blueviolet; */
+}
+
+h2 {
+  font-size: 25px;
   font-weight: bold;
+}
+
+#searchBox {
+  width:100%; 
+  margin: 0px;
+}
+
+.btn {
+  background-color: rgb(168, 168, 168);
+  color: black;
+  margin-top: 15px;
+  font-size: 18px;
+  padding: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width:100%;
+  border: none;
+}
+
+.btn:hover {
+  background-color: rgb(201, 201, 201);
+}
+
+#searchBtn {
+  background-color: rgb(0, 132, 255);
+  color: aliceblue;
+}
+
+#searchBtn:hover {
+  background-color: rgb(75, 174, 231);
+}
+
+#divLine {
+  background-color: rgb(56, 56, 56);
+  width: 100%;
+  height: 2px;
+  margin-top: 15px;
 }
 
 
