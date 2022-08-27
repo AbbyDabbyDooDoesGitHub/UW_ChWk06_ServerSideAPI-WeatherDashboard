@@ -71,6 +71,47 @@ h2 {
   margin-top: 15px;
 }
 
+p {
+  display: inline-flex;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#day0-title {
+  display: inline-flex;
+}
+
+.location-fiveDayForecastCards {
+  display: inline-flex;
+}
+
+.forcastCard {
+  background-color: rgb(21, 21, 131);
+  margin: 5px;
+  padding: 5px;
+  color:aliceblue;
+}
+
+h4 {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.forcastCard p {
+  font-size: 12px;
+}
+
+.location-overview {
+  border: 2px solid rgb(56, 56, 56);
+  border-radius: 5px;
+  padding: 10px;
+  padding-top: 15px;
+  margin-bottom: 10px;
+}
+
 
 /* Makes it so there's no underline under the hyperlink */
 /* a {
