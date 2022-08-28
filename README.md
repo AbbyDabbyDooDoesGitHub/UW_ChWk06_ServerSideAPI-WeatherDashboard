@@ -42,6 +42,7 @@ THEN I am again presented with current and future conditions for that city
 
 ### Helpful References
 - [Full-Stack Blog on how to use API keys](https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys)
+- [Change Image Source JavaScript](https://www.delftstack.com/howto/javascript/change-image-src-javascript/#:~:text=Change%20the%20Source%20of%20an,image%20using%20the%20src%20property.)
 
 ### Technology
 - [OpenWeather One Call API](https://openweathermap.org/api/one-call-api)
