@@ -48,7 +48,21 @@ THEN I am again presented with current and future conditions for that city
 - [Bootstrap Framework](https://getbootstrap.com/)
 - [jQuery Library](https://jquery.com/)
 
-<!-- ### Media -->
+### Media
+- 11d icon (thunderstorm): [lightning cloudy by reynaindra from NounProject.com](https://thenounproject.com/browse/icons/term/lightning-cloudy/")
+- 09d icon (drizzle): [showers by reynaindra from NounProject.com](https://thenounproject.com/browse/icons/term/showers/)
+- 10d icon (rain): [Rain by reynaindra from NounProject.com](https://thenounproject.com/browse/icons/term/rain/)
+- 13d icon (snow): [Snow by Daniil Churakov from NounProject.com](https://thenounproject.com/browse/icons/term/snow/)
+- 50d icon (haze/fog/atmosphere): [fog by reynaindra from NounProject.com](https://thenounproject.com/browse/icons/term/fog/)
+- 01d icon (clear day): [day sunny by reynaindra from NounProject.com ](https://thenounproject.com/browse/icons/term/day-sunny/)
+- 01n icon (clear night): [Moon by reynaindra from NounProject.com](https://thenounproject.com/browse/icons/term/moon/) 
+- 02d icon (partly cloudy day): [Cloudy Day by reynaindra from NounProject.com](https://thenounproject.com/browse/icons/term/cloudy-day/)
+- 02n icon (partly cloudy night): [Cloudy Night by reynaindra from NounProject.com](https://thenounproject.com/browse/icons/term/cloudy-night/)
+- 03d icon (clouds day): [Cloudy climate by icon 54 from NounProject.com](https://thenounproject.com/browse/icons/term/cloudy-climate/)
+- 03n icon (clouds night): [Cloudy climate by icon 54 from NounProject.com](https://thenounproject.com/browse/icons/term/cloudy-climate/)
+- 04d icon (heavy clouds day): [Overcast clouds by icon 54 from NounProject.com](https://thenounproject.com/browse/icons/term/overcast-clouds/)
+- 04n icon (heavy clouds night): [Overcast clouds by icon 54 from NounProject.com](https://thenounproject.com/browse/icons/term/overcast-clouds/)
+
 
 
 <!-- # 06 Server-Side APIs: Weather Dashboard
