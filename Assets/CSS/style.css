@@ -85,7 +85,9 @@ h3 {
 }
 
 .location-fiveDayForecastCards {
-  display: inline-flex;
+  display: flex;
+  flex-wrap: wrap;
+  
 }
 
 .forcastCard {
@@ -93,6 +95,8 @@ h3 {
   margin: 5px;
   padding: 5px;
   color:aliceblue;
+  flex-grow: 1;
+  min-width: 17%;
 }
 
 h4 {
