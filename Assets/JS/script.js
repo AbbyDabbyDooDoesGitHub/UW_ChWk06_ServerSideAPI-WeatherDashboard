@@ -1,5 +1,11 @@
 // alert('JS File is connected');
 
+// YWVkYWY0ODNjMDIyNDNmMjhlMzRhZWVmZWUzYjAzNDU6ZGQzNzVlYmMtNjE4Yi00MDdlLWJhNDAtMzI1MWU3ZDE4NGY2
+// https://developer.myptv.com/Documentation/Geocoding%20API/QuickStart.htm
+// search https://api.myptv.com/geocoding/v1/locations/by-text?searchText=aan%27t%20verlaat%2033f%20&apiKey=YOUR_API_KEY
+// https://api.myptv.com/geocoding/v1/locations/by-text?searchText=Salem&countryFilter=US&apiKey=YWVkYWY0ODNjMDIyNDNmMjhlMzRhZWVmZWUzYjAzNDU6ZGQzNzVlYmMtNjE4Yi00MDdlLWJhNDAtMzI1MWU3ZDE4NGY2
+// https://api.myptv.com/geocoding/v1/locations/by-text?searchText=Las%20Vegas&countryFilter=US&apiKey=YWVkYWY0ODNjMDIyNDNmMjhlMzRhZWVmZWUzYjAzNDU6ZGQzNzVlYmMtNjE4Yi00MDdlLWJhNDAtMzI1MWU3ZDE4NGY2
+
 // ADDRESSES TO INDEX ITEMS
 var recent1 = document.getElementById("recentSearch1");
 var recent2 = document.getElementById("recentSearch2");

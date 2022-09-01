@@ -35,8 +35,26 @@ h2 {
 }
 
 #searchBox {
-  width:100%; 
+  display: inline-flex;
+  width:75%; 
   margin: 0px;
+}
+
+#stateSearchBox {
+  display: inline-flex;
+  float: right;
+  width: 23%; 
+  margin: 0px;
+}
+
+#errorText {
+  margin-top: 10px;
+  margin-bottom: 0%;
+  font-style: italic;
+  font-weight: bold;
+  color: red;
+
+  display: none;
 }
 
 .btn {
@@ -126,6 +144,7 @@ h4 {
 .weatherIcon {
   max-width: 40px;
 }
+
 
 
 /* Makes it so there's no underline under the hyperlink */

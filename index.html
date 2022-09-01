@@ -28,11 +28,19 @@
 
       <div class="left-side-display">
         <div>
-          <h2>Search for a City:</h2>
-          <form role="search">
-            <input class="form-control" id="searchBox" type="search" placeholder="Seattle" aria-label="Search">
-          </form>
-          <button class="btn" id="searchBtn" type="submit">Search</button>
+          <div>
+            <h2>Search for a City:</h2>
+          </div>
+          <div>
+            <form role="search">
+              <input class="form-control" id="searchBox" type="search" placeholder="Seattle" aria-label="Search">
+              <input class="form-control" id="stateSearchBox" type="search" placeholder="WA" aria-label="Search">
+            </form>
+          </div>
+          <div>
+            <button class="btn" id="searchBtn" type="submit">Search</button>
+          </div>
+          <p id="errorText">Error: City is required</p>
         </div>
   
         <div id="divLine"></div>
@@ -96,7 +104,7 @@
             <div class="forecastCard" id="day1-card">
               <h4 id="day1-date">MM/DD/YYYY</h4>
   
-              <img class="weatherIcon" id="day1-img" src="./Assets/Images/01d.png" alt="clear day">
+              <img class="weatherIcon" id="day1-img" src="./Assets/Images/white_02d.png" alt="clear day">
   
               <div>
                 <p>Temp: </p>
@@ -118,7 +126,7 @@
             <div class="forecastCard" id="day2-card">
               <h4 id="day2-date">MM/DD/YYYY</h4>
   
-              <img class="weatherIcon" id="day2-img" src="./Assets/Images/01d.png" alt="clear day">
+              <img class="weatherIcon" id="day2-img" src="./Assets/Images/white_11d.png" alt="clear day">
   
               <div>
                 <p>Temp: </p>
@@ -140,7 +148,7 @@
             <div class="forecastCard" id="day3-card">
               <h4 id="day3-date">MM/DD/YYYY</h4>
   
-              <img class="weatherIcon" id="day3-img" src="./Assets/Images/01d.png" alt="clear day">
+              <img class="weatherIcon" id="day3-img" src="./Assets/Images/white_50d.png" alt="clear day">
   
               <div>
                 <p>Temp: </p>
@@ -162,7 +170,7 @@
             <div class="forecastCard" id="day4-card">
               <h4 id="day4-date">MM/DD/YYYY</h4>
   
-              <img class="weatherIcon" id="day4-img" src="./Assets/Images/01d.png" alt="clear day">
+              <img class="weatherIcon" id="day4-img" src="./Assets/Images/white_13d.png" alt="clear day">
   
               <div>
                 <p>Temp: </p>
@@ -184,7 +192,7 @@
             <div class="forecastCard" id="day5-card">
               <h4 id="day5-date">MM/DD/YYYY</h4>
   
-              <img class="weatherIcon" id="day5-img" src="./Assets/Images/01d.png" alt="clear day">
+              <img class="weatherIcon" id="day5-img" src="./Assets/Images/white_10d.png" alt="clear day">
   
               <div>
                 <p>Temp: </p>
