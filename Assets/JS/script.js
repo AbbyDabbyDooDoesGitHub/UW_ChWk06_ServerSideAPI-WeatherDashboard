@@ -47,6 +47,11 @@ var day5_img  = document.getElementById("day5-img");
 var day5_wind = document.getElementById("day5-wind");
 var day5_hum  = document.getElementById("day5-humidity");
 
+// LAT AND LONG API VARIABLES
+var selCity_formatted;
+var selCity_lat;
+var selCity_long;
+
 // LOCAL STORAGE VARIABLES
 // var recent1_LS  = localStorage.getItem("recent1");
 
@@ -134,6 +139,12 @@ function startSearch () {
         })
         .then(response => response.json())
         .then(result => console.log(result));
+
+        selCity_formatted;
+        selCity_lat;
+        selCity_long;
+
+
 
     }
 }
