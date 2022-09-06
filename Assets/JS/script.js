@@ -81,9 +81,6 @@ function startSearch () {
     console.log("ent_city  = " + ent_city);
     console.log("ent_state  = " + ent_state);
 
-
-
-
     if (bothTexts == null || bothTexts == "") {
         console.log("nothing entered. bothTexts is " + bothTexts);
 
@@ -160,10 +157,40 @@ function processLocationData(data) {
     console.log("selCity_long is " + selCity_long);
     console.log("selCity_formatted is " + selCity_formatted);
 
-    // console.log("Lat is " + data.referencePosition.latitude);
-    // console.log("Long is " + data.referencePosition.longitude);
-    // console.log("formattedAddress is " + data.formattedAddress);
+    getWeatherData(selCity_lat,selCity_long,selCity_formatted);
 
+}
+
+function getWeatherData(selCity_lat,selCity_long,selCity_formatted) {
+
+    // WEB LINK FOR API DOCS
+    // https://openweathermap.org/api/one-call-api
+
+    var weathReqURL = "https://api.openweathermap.org/data/2.5/onecall?lat={" + selCity_lat + "&}&lon={" + selCity_long + "}&appid={72384a45b07742dc70db33f0ab119992}";
+
+    console.log("weathReqURL is " + weathReqURL);
+
+    var weathFetchResults;
+
+    console.log("weathFetchResults preFetch is: " + weathFetchResults);
+
+    fetch(weathReqURL, {
+        method: "GET",
+        headers: { apiKey: "72384a45b07742dc70db33f0ab119992", "Content-Type": "application/json" },
+    })
+    .then(response => response.json())
+    .then(json => weathFetchResults = (json.locations[0]))
+    .then(function () {
+        processWeatherData (weathFetchResults);
+    });
+
+
+
+}
+
+function processWeatherData (weathFetchResults) {
+    console.log("processWeatherData ran");
+    console.log("weathFetchResults is " + weathFetchResults);
 }
 
 //   Test variable so I don't use up my API hourly requests
@@ -191,8 +218,6 @@ var test = {
         }
     }]
 };
-
-// ent_city.value
 
 // document.getElementById("myImageId").src="newSource.png";
 // document.getElementById("myImageId").alt="newSource alt";
