@@ -47,11 +47,6 @@ var day5_img  = document.getElementById("day5-img");
 var day5_wind = document.getElementById("day5-wind");
 var day5_hum  = document.getElementById("day5-humidity");
 
-// LAT AND LONG API VARIABLES
-var selCity_formatted;
-var selCity_lat;
-var selCity_long;
-
 // LOCAL STORAGE VARIABLES
 // var recent1_LS  = localStorage.getItem("recent1");
 
@@ -113,7 +108,7 @@ function startSearch () {
         // SET A TIMEOUT SO THE SUCCESS TEXT AND LINE GOES AWAY AFTER 1 SECOND
         setTimeout(() => {
             hide(errorText); 
-        }, 1000); // 👈️ time in milliseconds
+        }, 1250); // 👈️ time in milliseconds
 
     } else {
 
@@ -133,22 +128,69 @@ function startSearch () {
 
         console.log("reqURL is " + reqURL);
 
+        var fetchResults;
+
+        console.log("fetchResults preFetch is: " + fetchResults);
+    
         fetch(reqURL, {
-        method: "GET",
-        headers: { apiKey: "YWVkYWY0ODNjMDIyNDNmMjhlMzRhZWVmZWUzYjAzNDU6ZGQzNzVlYmMtNjE4Yi00MDdlLWJhNDAtMzI1MWU3ZDE4NGY2", "Content-Type": "application/json" },
+            method: "GET",
+            headers: { apiKey: "YWVkYWY0ODNjMDIyNDNmMjhlMzRhZWVmZWUzYjAzNDU6ZGQzNzVlYmMtNjE4Yi00MDdlLWJhNDAtMzI1MWU3ZDE4NGY2", "Content-Type": "application/json" },
         })
         .then(response => response.json())
-        .then(result => console.log(result));
-
-        selCity_formatted;
-        selCity_lat;
-        selCity_long;
-
-
+        .then(json => fetchResults = (json.locations[0]))
+        .then(function () {
+            processLocationData (fetchResults);
+        });
 
     }
 }
 
+function processLocationData(data) {
+
+    console.log("processLocationData ran");
+
+    // console.log("data in processLocationData is " + data);
+
+    // LAT AND LONG API VARIABLES
+    var selCity_lat = data.referencePosition.latitude;
+    var selCity_long = data.referencePosition.longitude;
+    var selCity_formatted = data.formattedAddress;
+
+    console.log("selCity_lat is " + selCity_lat);
+    console.log("selCity_long is " + selCity_long);
+    console.log("selCity_formatted is " + selCity_formatted);
+
+    // console.log("Lat is " + data.referencePosition.latitude);
+    // console.log("Long is " + data.referencePosition.longitude);
+    // console.log("formattedAddress is " + data.formattedAddress);
+
+}
+
+//   Test variable so I don't use up my API hourly requests
+var test = {
+    "locations":[{
+        "referencePosition":{
+            "latitude":47.60356903076172,
+            "longitude":-122.32945251464844
+        },
+        "address":{
+            "countryName":"United States",
+            "state":"Washington",
+            "province":"",
+            "postalCode":"",
+            "city":"Seattle",
+            "district":"",
+            "subdistrict":"",
+            "street":"",
+            "houseNumber":""
+        },
+        "formattedAddress":"Seattle, WA",
+        "locationType":"LOCALITY",
+        "quality":{
+            "totalScore":100
+        }
+    }]
+};
 
 // ent_city.value
 
