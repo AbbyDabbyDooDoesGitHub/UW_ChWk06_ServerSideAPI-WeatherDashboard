@@ -47,6 +47,7 @@ THEN I am again presented with current and future conditions for that city
 - [Change Image Source JavaScript](https://www.delftstack.com/howto/javascript/change-image-src-javascript/#:~:text=Change%20the%20Source%20of%20an,image%20using%20the%20src%20property.)
 
 ### Technology
+- [Geocoding & Places API by PTV Developer](https://developer.myptv.com/APIs/Geocoding%20&%20Places.htm)
 - [OpenWeather One Call API](https://openweathermap.org/api/one-call-api)
 - [Bootstrap Framework](https://getbootstrap.com/)
 - [jQuery Library](https://jquery.com/)

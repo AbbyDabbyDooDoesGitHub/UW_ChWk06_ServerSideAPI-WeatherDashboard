@@ -23,11 +23,6 @@ var fiveDayCard = document.getElementById("location-fiveDayForecast");
 var curDayCard  = document.getElementById("location-overviewCurrent");
 var defaultCard  = document.getElementById("defaultCard");
 
-
-// reveal(fiveDayCard);
-// reveal(curDayCard);
-// hide(defaultCard);
-
 var selCity = document.getElementById("selectedLocation");
 
 var day0      = document.getElementById("day0-date");
@@ -61,6 +56,15 @@ var day5_img  = document.getElementById("day5-img");
 var day5_temp = document.getElementById("day5-temp");
 var day5_wind = document.getElementById("day5-wind");
 var day5_hum  = document.getElementById("day5-humidity");
+
+// DO ON LOAD
+updateRecents ();
+
+// FOR FORMATTING AND TESTING
+// reveal(fiveDayCard);
+// reveal(curDayCard);
+// hide(defaultCard);
+// processWeatherData (test);
 
 //   Test variable so I don't use up my API requests
 var test = {
@@ -708,8 +712,6 @@ function updateUV(value_day0_UV) {
 
 }
 
-// processWeatherData (test);
-
 // LOCAL STORAGE STUFF -----------------------------------------------------------
 
 function checkSearches(formattedAddress,lat,long){
@@ -751,54 +753,6 @@ function checkSearches(formattedAddress,lat,long){
         shuffleSearches(newSearch,recent1_LS,recent2_LS,recent3_LS,recent4_LS,recent5_LS,recent6_LS,recent7_LS);
 
     }
-
-    // if (recent1_LS == null || recent1_LS[0] == "") {
-    //     shuffleSearches(newSearch,recent2_LS,recent3_LS,recent4_LS,recent5_LS,recent6_LS,recent7_LS,recent8_LS);
-
-    // } else if (newSearch[0] === recent1_LS[0]) {
-
-    //     shuffleSearches(newSearch,recent2_LS,recent3_LS,recent4_LS,recent5_LS,recent6_LS,recent7_LS,recent8_LS);
-
-    // } else if (recent2_LS == null || recent2_LS[0] == "") {
-    //     shuffleSearches(newSearch,recent1_LS,recent3_LS,recent4_LS,recent5_LS,recent6_LS,recent7_LS,recent8_LS);
-
-    // } else if (newSearch[0] === recent2_LS[0]) {
-    //     shuffleSearches(newSearch,recent1_LS,recent3_LS,recent4_LS,recent5_LS,recent6_LS,recent7_LS,recent8_LS);
-        
-    // } else if (recent3_LS == null || recent3_LS[0] == "") {
-    //     shuffleSearches(newSearch,recent1_LS,recent2_LS,recent4_LS,recent5_LS,recent6_LS,recent7_LS,recent8_LS);
-
-    // } else if (newSearch[0] === recent3_LS[0]) {
-    //     shuffleSearches(newSearch,recent1_LS,recent2_LS,recent4_LS,recent5_LS,recent6_LS,recent7_LS,recent8_LS);
-        
-    // } else if (recent4_LS == null || recent4_LS[0] == "") {
-    //     shuffleSearches(newSearch,recent1_LS,recent2_LS,recent3_LS,recent5_LS,recent6_LS,recent7_LS,recent8_LS);
-
-    // } else if (newSearch[0] === recent4_LS[0]) {
-    //     shuffleSearches(newSearch,recent1_LS,recent2_LS,recent3_LS,recent5_LS,recent6_LS,recent7_LS,recent8_LS);
-        
-    // } else if (recent5_LS == null || recent5_LS[0] == "") {
-    //     shuffleSearches(newSearch,recent1_LS,recent2_LS,recent3_LS,recent4_LS,recent6_LS,recent7_LS,recent8_LS);
-
-    // } else if (newSearch[0] === recent5_LS[0]) {
-    //     shuffleSearches(newSearch,recent1_LS,recent2_LS,recent3_LS,recent4_LS,recent6_LS,recent7_LS,recent8_LS);
-        
-    // } else if (recent6_LS == null || recent6_LS[0] == "") {
-    //     shuffleSearches(newSearch,recent1_LS,recent2_LS,recent3_LS,recent4_LS,recent5_LS,recent7_LS,recent8_LS);
-
-    // } else if (newSearch[0] === recent6_LS[0]) {
-    //     shuffleSearches(newSearch,recent1_LS,recent2_LS,recent3_LS,recent4_LS,recent5_LS,recent7_LS,recent8_LS);
-        
-    // } else if (recent7_LS == null || recent7_LS[0] == "") {
-    //     shuffleSearches(newSearch,recent1_LS,recent2_LS,recent3_LS,recent4_LS,recent5_LS,recent6_LS,recent8_LS);
-
-    // } else if (newSearch[0] === recent7_LS[0]) {
-    //     shuffleSearches(newSearch,recent1_LS,recent2_LS,recent3_LS,recent4_LS,recent5_LS,recent6_LS,recent8_LS);
-        
-    // } else {
-    //     shuffleSearches(newSearch,recent1_LS,recent2_LS,recent3_LS,recent4_LS,recent5_LS,recent6_LS,recent7_LS);
-
-    // }
     
 }
 
@@ -864,8 +818,6 @@ function shuffleSearches(r1_LS,r2_LS,r3_LS,r4_LS,r5_LS,r6_LS,r7_LS,r8_LS) {
     updateRecents ();
 
 }
-
-updateRecents ();
 
 function updateRecents () {
 
