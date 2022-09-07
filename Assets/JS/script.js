@@ -518,16 +518,8 @@ function getWeatherData(selCity_lat,selCity_long,selCity_formatted) {
     // WEB LINK FOR API DOCS
     // https://openweathermap.org/api/one-call-api
 
-    // current weather api call
-    // https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
-
-    // 5 day forecast api call example
-    // https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
-
-    // one call
-    // https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
+    // one call api example
     // https://api.openweathermap.org/data/3.0/onecall?lat=33.44&lon=-94.04&exclude=minutely,hourly,alerts&units=imperial&appid=72384a45b07742dc70db33f0ab119992
-
 
 
     var weathReqURL        = "https://api.openweathermap.org/data/3.0/onecall?lat=" + selCity_lat + "&lon=" + selCity_long + "&exclude=minutely,hourly,alerts&units=imperial&appid=72384a45b07742dc70db33f0ab119992";
