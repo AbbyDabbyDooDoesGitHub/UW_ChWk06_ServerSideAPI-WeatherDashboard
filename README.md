@@ -65,6 +65,7 @@ THEN I am again presented with current and future conditions for that city
 - 03n icon (clouds night): [Cloudy climate by icon 54 from NounProject.com](https://thenounproject.com/browse/icons/term/cloudy-climate/)
 - 04d icon (heavy clouds day): [Overcast clouds by icon 54 from NounProject.com](https://thenounproject.com/browse/icons/term/overcast-clouds/)
 - 04n icon (heavy clouds night): [Overcast clouds by icon 54 from NounProject.com](https://thenounproject.com/browse/icons/term/overcast-clouds/)
+- Default Image Visible Prior to Search: [Clouds Png vectors by Lovepik.com](https://lovepik.com/images/png-clouds.html)
 
 
 
