@@ -19,6 +19,12 @@ var recent6 = document.getElementById("recentSearch6");
 var recent7 = document.getElementById("recentSearch7");
 var recent8 = document.getElementById("recentSearch8");
 
+var fiveDayCard = document.getElementById("location-fiveDayForecast");
+var curDayCard  = document.getElementById("location-overviewCurrent");
+
+// reveal(fiveDayCard);
+// reveal(curDayCard);
+
 var selCity = document.getElementById("selectedLocation");
 
 var day0      = document.getElementById("day0-date");
@@ -52,12 +58,6 @@ var day5_img  = document.getElementById("day5-img");
 var day5_temp = document.getElementById("day5-temp");
 var day5_wind = document.getElementById("day5-wind");
 var day5_hum  = document.getElementById("day5-humidity");
-
-// LOCAL STORAGE VARIABLES
-// var recent1_LS  = localStorage.getItem("recent1");
-
-// TIME VARIABLES
-// var currentTime = moment();
 
 //   Test variable so I don't use up my API requests
 var test = {
@@ -405,8 +405,16 @@ var test = {
 	]
 };
 
-// ADD EVENT LISTENER
+// ADD EVENT LISTENERS ---------------------------------------------------
 searchBtn.addEventListener("click",function() {startSearch()});
+recent1.addEventListener("click",function() {startSearchFromRecent("recent1")});
+recent2.addEventListener("click",function() {startSearchFromRecent("recent2")});
+recent3.addEventListener("click",function() {startSearchFromRecent("recent3")});
+recent4.addEventListener("click",function() {startSearchFromRecent("recent4")});
+recent5.addEventListener("click",function() {startSearchFromRecent("recent5")});
+recent6.addEventListener("click",function() {startSearchFromRecent("recent6")});
+recent7.addEventListener("click",function() {startSearchFromRecent("recent7")});
+recent8.addEventListener("click",function() {startSearchFromRecent("recent8")});
 
 // FUNCTION TO REVEAL BY CLASS OR ID
 function reveal (section) {
@@ -420,9 +428,6 @@ function hide (section) {
     section.style.display = "none";
 }
 
-console.log("ent_city  = " + document.getElementById("searchBox").value);
-console.log("ent_state  = " + document.getElementById("stateSearchBox").value);
-
 function startSearch () {
 
     var ent_city  = document.getElementById("searchBox").value;
@@ -430,8 +435,8 @@ function startSearch () {
     var bothTexts = ent_city + ent_state;
 
     console.log("startSearch ran");
-    console.log("ent_city  = " + ent_city);
-    console.log("ent_state  = " + ent_state);
+    // console.log("ent_city  = " + ent_city);
+    // console.log("ent_state  = " + ent_state);
 
     if (bothTexts == null || bothTexts == "") {
         console.log("nothing entered. bothTexts is " + bothTexts);
@@ -497,12 +502,11 @@ function startSearch () {
 function processLocationData(data) {
 
     console.log("processLocationData ran");
-
     // console.log("data in processLocationData is " + data);
 
     // LAT AND LONG API VARIABLES
-    var selCity_lat = data.referencePosition.latitude;
-    var selCity_long = data.referencePosition.longitude;
+    var selCity_lat       = data.referencePosition.latitude;
+    var selCity_long      = data.referencePosition.longitude;
     var selCity_formatted = data.formattedAddress;
 
     console.log("selCity_lat is " + selCity_lat);
@@ -510,6 +514,20 @@ function processLocationData(data) {
     console.log("selCity_formatted is " + selCity_formatted);
 
     getWeatherData(selCity_lat,selCity_long,selCity_formatted);
+    checkSearches(selCity_formatted,selCity_lat,selCity_long);
+
+}
+
+function startSearchFromRecent(locationName) {
+
+    var recentClicked = JSON.parse(localStorage.getItem(locationName));
+
+    var selCity_formatted = recentClicked[0];
+    var selCity_lat       = recentClicked[1];
+    var selCity_long      = recentClicked[2];
+
+    getWeatherData(selCity_lat,selCity_long,selCity_formatted);
+    checkSearches(selCity_formatted,selCity_lat,selCity_long);
 
 }
 
@@ -546,8 +564,7 @@ function getWeatherData(selCity_lat,selCity_long,selCity_formatted) {
 
 function processWeatherData (data) {
     console.log("processWeatherData ran");
-    console.log(data);
-    // console.log("weathFetchResults is " + weathFetchResults);
+    // console.log(data);
 
     var value_day0        = data.current.dt;
     var value_day0_img    = data.current.weather[0].icon;
@@ -599,9 +616,10 @@ function processWeatherData (data) {
     updateHum(value_day0_hum,value_day1_hum,value_day2_hum,value_day3_hum,value_day4_hum,value_day5_hum);
     updateUV(value_day0_UV);
 
-}
+    reveal(fiveDayCard);
+    reveal(curDayCard);
 
-// convertTimestamp(1575909015,day0)
+}
 
 function convertTimestamp(data,htmlLoc) {
     const unixTimestamp = data
@@ -618,7 +636,7 @@ function convertTimestamp(data,htmlLoc) {
 
     var resultDate = dateFormat_month + "/" + dateFormat_day + "/" + dateFormat_year;
 
-    console.log("initial unix timestamp was " + unixTimestamp + " & the resultDate is " + resultDate);
+    // console.log("initial unix timestamp was " + unixTimestamp + " & the resultDate is " + resultDate);
 
     htmlLoc.innerHTML = resultDate;
 }
@@ -687,3 +705,302 @@ function updateUV(value_day0_UV) {
 }
 
 // processWeatherData (test);
+
+// LOCAL STORAGE STUFF -----------------------------------------------------------
+
+function checkSearches(formattedAddress,lat,long){
+
+    console.log("checkSearches ran");
+
+    var newSearch = [formattedAddress,lat,long];
+    var recent1_LS = JSON.parse(localStorage.getItem("recent1"));
+    var recent2_LS = JSON.parse(localStorage.getItem("recent2"));
+    var recent3_LS = JSON.parse(localStorage.getItem("recent3"));
+    var recent4_LS = JSON.parse(localStorage.getItem("recent4"));
+    var recent5_LS = JSON.parse(localStorage.getItem("recent5"));
+    var recent6_LS = JSON.parse(localStorage.getItem("recent6"));
+    var recent7_LS = JSON.parse(localStorage.getItem("recent7"));
+    var recent8_LS = JSON.parse(localStorage.getItem("recent8"));
+
+    if (recent1_LS == null || recent1_LS[0] == "" || newSearch[0] === recent1_LS[0]) {
+        shuffleSearches(newSearch,recent2_LS,recent3_LS,recent4_LS,recent5_LS,recent6_LS,recent7_LS,recent8_LS);
+
+    } else if (recent2_LS == null || recent2_LS[0] == "" || newSearch[0] === recent2_LS[0]) {
+        shuffleSearches(newSearch,recent1_LS,recent3_LS,recent4_LS,recent5_LS,recent6_LS,recent7_LS,recent8_LS);
+
+    } else if (recent3_LS == null || recent3_LS[0] == "" || newSearch[0] === recent3_LS[0]) {
+        shuffleSearches(newSearch,recent1_LS,recent2_LS,recent4_LS,recent5_LS,recent6_LS,recent7_LS,recent8_LS);
+
+    } else if (recent4_LS == null || recent4_LS[0] == "" || newSearch[0] === recent4_LS[0]) {
+        shuffleSearches(newSearch,recent1_LS,recent2_LS,recent3_LS,recent5_LS,recent6_LS,recent7_LS,recent8_LS);
+
+    } else if (recent5_LS == null || recent5_LS[0] == "" || newSearch[0] === recent5_LS[0]) {
+        shuffleSearches(newSearch,recent1_LS,recent2_LS,recent3_LS,recent4_LS,recent6_LS,recent7_LS,recent8_LS);
+
+    } else if (recent6_LS == null || recent6_LS[0] == "" || newSearch[0] === recent6_LS[0]) {
+        shuffleSearches(newSearch,recent1_LS,recent2_LS,recent3_LS,recent4_LS,recent5_LS,recent7_LS,recent8_LS);
+
+    } else if (recent7_LS == null || recent7_LS[0] == "" || newSearch[0] === recent7_LS[0]) {
+        shuffleSearches(newSearch,recent1_LS,recent2_LS,recent3_LS,recent4_LS,recent5_LS,recent6_LS,recent8_LS);
+
+    } else {
+        shuffleSearches(newSearch,recent1_LS,recent2_LS,recent3_LS,recent4_LS,recent5_LS,recent6_LS,recent7_LS);
+
+    }
+
+    // if (recent1_LS == null || recent1_LS[0] == "") {
+    //     shuffleSearches(newSearch,recent2_LS,recent3_LS,recent4_LS,recent5_LS,recent6_LS,recent7_LS,recent8_LS);
+
+    // } else if (newSearch[0] === recent1_LS[0]) {
+
+    //     shuffleSearches(newSearch,recent2_LS,recent3_LS,recent4_LS,recent5_LS,recent6_LS,recent7_LS,recent8_LS);
+
+    // } else if (recent2_LS == null || recent2_LS[0] == "") {
+    //     shuffleSearches(newSearch,recent1_LS,recent3_LS,recent4_LS,recent5_LS,recent6_LS,recent7_LS,recent8_LS);
+
+    // } else if (newSearch[0] === recent2_LS[0]) {
+    //     shuffleSearches(newSearch,recent1_LS,recent3_LS,recent4_LS,recent5_LS,recent6_LS,recent7_LS,recent8_LS);
+        
+    // } else if (recent3_LS == null || recent3_LS[0] == "") {
+    //     shuffleSearches(newSearch,recent1_LS,recent2_LS,recent4_LS,recent5_LS,recent6_LS,recent7_LS,recent8_LS);
+
+    // } else if (newSearch[0] === recent3_LS[0]) {
+    //     shuffleSearches(newSearch,recent1_LS,recent2_LS,recent4_LS,recent5_LS,recent6_LS,recent7_LS,recent8_LS);
+        
+    // } else if (recent4_LS == null || recent4_LS[0] == "") {
+    //     shuffleSearches(newSearch,recent1_LS,recent2_LS,recent3_LS,recent5_LS,recent6_LS,recent7_LS,recent8_LS);
+
+    // } else if (newSearch[0] === recent4_LS[0]) {
+    //     shuffleSearches(newSearch,recent1_LS,recent2_LS,recent3_LS,recent5_LS,recent6_LS,recent7_LS,recent8_LS);
+        
+    // } else if (recent5_LS == null || recent5_LS[0] == "") {
+    //     shuffleSearches(newSearch,recent1_LS,recent2_LS,recent3_LS,recent4_LS,recent6_LS,recent7_LS,recent8_LS);
+
+    // } else if (newSearch[0] === recent5_LS[0]) {
+    //     shuffleSearches(newSearch,recent1_LS,recent2_LS,recent3_LS,recent4_LS,recent6_LS,recent7_LS,recent8_LS);
+        
+    // } else if (recent6_LS == null || recent6_LS[0] == "") {
+    //     shuffleSearches(newSearch,recent1_LS,recent2_LS,recent3_LS,recent4_LS,recent5_LS,recent7_LS,recent8_LS);
+
+    // } else if (newSearch[0] === recent6_LS[0]) {
+    //     shuffleSearches(newSearch,recent1_LS,recent2_LS,recent3_LS,recent4_LS,recent5_LS,recent7_LS,recent8_LS);
+        
+    // } else if (recent7_LS == null || recent7_LS[0] == "") {
+    //     shuffleSearches(newSearch,recent1_LS,recent2_LS,recent3_LS,recent4_LS,recent5_LS,recent6_LS,recent8_LS);
+
+    // } else if (newSearch[0] === recent7_LS[0]) {
+    //     shuffleSearches(newSearch,recent1_LS,recent2_LS,recent3_LS,recent4_LS,recent5_LS,recent6_LS,recent8_LS);
+        
+    // } else {
+    //     shuffleSearches(newSearch,recent1_LS,recent2_LS,recent3_LS,recent4_LS,recent5_LS,recent6_LS,recent7_LS);
+
+    // }
+    
+}
+
+function shuffleSearches(r1_LS,r2_LS,r3_LS,r4_LS,r5_LS,r6_LS,r7_LS,r8_LS) {
+
+    if (r1_LS == null) {
+        console.log("error: r1_LS == null");
+
+    } else if (r2_LS == null || r2_LS[0] == "" ) {
+        localStorage.setItem("recent1", JSON.stringify(r1_LS));
+
+    } else if (r3_LS == null || r3_LS[0] == "" ) {
+        localStorage.setItem("recent1", JSON.stringify(r1_LS));
+        localStorage.setItem("recent2", JSON.stringify(r2_LS));
+
+    } else if (r4_LS == null || r4_LS[0] == "" ) {
+        localStorage.setItem("recent1", JSON.stringify(r1_LS));
+        localStorage.setItem("recent2", JSON.stringify(r2_LS));
+        localStorage.setItem("recent3", JSON.stringify(r3_LS));
+
+    } else if (r5_LS == null || r5_LS[0] == "" ) {
+        localStorage.setItem("recent1", JSON.stringify(r1_LS));
+        localStorage.setItem("recent2", JSON.stringify(r2_LS));
+        localStorage.setItem("recent3", JSON.stringify(r3_LS));
+        localStorage.setItem("recent4", JSON.stringify(r4_LS));
+
+    } else if (r6_LS == null || r6_LS[0] == "" ) {
+        localStorage.setItem("recent1", JSON.stringify(r1_LS));
+        localStorage.setItem("recent2", JSON.stringify(r2_LS));
+        localStorage.setItem("recent3", JSON.stringify(r3_LS));
+        localStorage.setItem("recent4", JSON.stringify(r4_LS));
+        localStorage.setItem("recent5", JSON.stringify(r5_LS));
+
+    } else if (r7_LS == null || r7_LS[0] == "" ) {
+        localStorage.setItem("recent1", JSON.stringify(r1_LS));
+        localStorage.setItem("recent2", JSON.stringify(r2_LS));
+        localStorage.setItem("recent3", JSON.stringify(r3_LS));
+        localStorage.setItem("recent4", JSON.stringify(r4_LS));
+        localStorage.setItem("recent5", JSON.stringify(r5_LS));
+        localStorage.setItem("recent6", JSON.stringify(r6_LS));
+
+    } else if (r8_LS == null || r8_LS[0] == "" ) {
+        localStorage.setItem("recent1", JSON.stringify(r1_LS));
+        localStorage.setItem("recent2", JSON.stringify(r2_LS));
+        localStorage.setItem("recent3", JSON.stringify(r3_LS));
+        localStorage.setItem("recent4", JSON.stringify(r4_LS));
+        localStorage.setItem("recent5", JSON.stringify(r5_LS));
+        localStorage.setItem("recent6", JSON.stringify(r6_LS));
+        localStorage.setItem("recent7", JSON.stringify(r7_LS));
+
+    } else {
+        localStorage.setItem("recent1", JSON.stringify(r1_LS));
+        localStorage.setItem("recent2", JSON.stringify(r2_LS));
+        localStorage.setItem("recent3", JSON.stringify(r3_LS));
+        localStorage.setItem("recent4", JSON.stringify(r4_LS));
+        localStorage.setItem("recent5", JSON.stringify(r5_LS));
+        localStorage.setItem("recent6", JSON.stringify(r6_LS));
+        localStorage.setItem("recent7", JSON.stringify(r7_LS));
+        localStorage.setItem("recent8", JSON.stringify(r8_LS));
+
+    }
+
+    updateRecents ();
+
+}
+
+updateRecents ();
+
+function updateRecents () {
+
+    var recent1_LS = JSON.parse(localStorage.getItem("recent1"));
+    var recent2_LS = JSON.parse(localStorage.getItem("recent2"));
+    var recent3_LS = JSON.parse(localStorage.getItem("recent3"));
+    var recent4_LS = JSON.parse(localStorage.getItem("recent4"));
+    var recent5_LS = JSON.parse(localStorage.getItem("recent5"));
+    var recent6_LS = JSON.parse(localStorage.getItem("recent6"));
+    var recent7_LS = JSON.parse(localStorage.getItem("recent7"));
+    var recent8_LS = JSON.parse(localStorage.getItem("recent8"));
+
+    if (recent1_LS == null || recent1_LS[0] == "" ) {
+        hide(recent1);
+        hide(recent2);
+        hide(recent3);
+        hide(recent4);
+        hide(recent5);
+        hide(recent6);
+        hide(recent7);
+        hide(recent8);
+
+    } else if (recent2_LS == null || recent2_LS[0] == "" ) {
+        reveal(recent1);
+        hide(recent2);
+        hide(recent3);
+        hide(recent4);
+        hide(recent5);
+        hide(recent6);
+        hide(recent7);
+        hide(recent8);
+        recent1.innerHTML = recent1_LS[0];
+
+    } else if (recent3_LS == null || recent3_LS[0] == "" ) {
+        reveal(recent1);
+        reveal(recent2);
+        hide(recent3);
+        hide(recent4);
+        hide(recent5);
+        hide(recent6);
+        hide(recent7);
+        hide(recent8);
+        recent1.innerHTML = recent1_LS[0];
+        recent2.innerHTML = recent2_LS[0];
+
+    } else if (recent4_LS == null || recent4_LS[0] == "" ) {
+        reveal(recent1);
+        reveal(recent2);
+        reveal(recent3);
+        hide(recent4);
+        hide(recent5);
+        hide(recent6);
+        hide(recent7);
+        hide(recent8);
+        recent1.innerHTML = recent1_LS[0];
+        recent2.innerHTML = recent2_LS[0];
+        recent3.innerHTML = recent3_LS[0];
+
+
+    } else if (recent5_LS == null || recent5_LS[0] == "" ) {
+        reveal(recent1);
+        reveal(recent2);
+        reveal(recent3);
+        reveal(recent4);
+        hide(recent5);
+        hide(recent6);
+        hide(recent7);
+        hide(recent8);
+        recent1.innerHTML = recent1_LS[0];
+        recent2.innerHTML = recent2_LS[0];
+        recent3.innerHTML = recent3_LS[0];
+        recent4.innerHTML = recent4_LS[0];
+
+    } else if (recent6_LS == null || recent6_LS[0] == "" ) {
+        reveal(recent1);
+        reveal(recent2);
+        reveal(recent3);
+        reveal(recent4);
+        reveal(recent5);
+        hide(recent6);
+        hide(recent7);
+        hide(recent8);
+        recent1.innerHTML = recent1_LS[0];
+        recent2.innerHTML = recent2_LS[0];
+        recent3.innerHTML = recent3_LS[0];
+        recent4.innerHTML = recent4_LS[0];
+        recent5.innerHTML = recent5_LS[0];
+
+    } else if (recent7_LS == null || recent7_LS[0] == "" ) {
+        reveal(recent1);
+        reveal(recent2);
+        reveal(recent3);
+        reveal(recent4);
+        reveal(recent5);
+        reveal(recent6);
+        hide(recent7);
+        hide(recent8);
+        recent1.innerHTML = recent1_LS[0];
+        recent2.innerHTML = recent2_LS[0];
+        recent3.innerHTML = recent3_LS[0];
+        recent4.innerHTML = recent4_LS[0];
+        recent5.innerHTML = recent5_LS[0];
+        recent6.innerHTML = recent6_LS[0];
+
+    } else if (recent8_LS == null || recent8_LS[0] == "" ) {
+        reveal(recent1);
+        reveal(recent2);
+        reveal(recent3);
+        reveal(recent4);
+        reveal(recent5);
+        reveal(recent6);
+        reveal(recent7);
+        hide(recent8);
+        recent1.innerHTML = recent1_LS[0];
+        recent2.innerHTML = recent2_LS[0];
+        recent3.innerHTML = recent3_LS[0];
+        recent4.innerHTML = recent4_LS[0];
+        recent5.innerHTML = recent5_LS[0];
+        recent6.innerHTML = recent6_LS[0];
+        recent7.innerHTML = recent7_LS[0];
+
+    } else {
+        reveal(recent1);
+        reveal(recent2);
+        reveal(recent3);
+        reveal(recent4);
+        reveal(recent5);
+        reveal(recent6);
+        reveal(recent7);
+        reveal(recent8);
+        recent1.innerHTML = recent1_LS[0];
+        recent2.innerHTML = recent2_LS[0];
+        recent3.innerHTML = recent3_LS[0];
+        recent4.innerHTML = recent4_LS[0];
+        recent5.innerHTML = recent5_LS[0];
+        recent6.innerHTML = recent6_LS[0];
+        recent7.innerHTML = recent7_LS[0];
+        recent8.innerHTML = recent8_LS[0];
+
+    }
+
+}

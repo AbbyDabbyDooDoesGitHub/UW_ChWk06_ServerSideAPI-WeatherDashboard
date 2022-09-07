@@ -145,6 +145,37 @@ h4 {
   max-width: 40px;
 }
 
+#recentSearch1 {
+  display: none;
+}
+#recentSearch2 {
+  display: none;
+}
+#recentSearch3 {
+  display: none;
+}
+#recentSearch4 {
+  display: none;
+}
+#recentSearch5 {
+  display: none;
+}
+#recentSearch6 {
+  display: none;
+}
+#recentSearch7 {
+  display: none;
+}
+#recentSearch8 {
+  display: none;
+}
+
+#location-fiveDayForecast {
+  display: none;
+}
+#location-overviewCurrent {
+  display: none;
+}
 
 
 /* Makes it so there's no underline under the hyperlink */
