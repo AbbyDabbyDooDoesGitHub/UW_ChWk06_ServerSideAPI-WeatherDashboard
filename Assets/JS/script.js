@@ -21,9 +21,12 @@ var recent8 = document.getElementById("recentSearch8");
 
 var fiveDayCard = document.getElementById("location-fiveDayForecast");
 var curDayCard  = document.getElementById("location-overviewCurrent");
+var defaultCard  = document.getElementById("defaultCard");
+
 
 // reveal(fiveDayCard);
 // reveal(curDayCard);
+// hide(defaultCard);
 
 var selCity = document.getElementById("selectedLocation");
 
@@ -616,6 +619,7 @@ function processWeatherData (data) {
     updateHum(value_day0_hum,value_day1_hum,value_day2_hum,value_day3_hum,value_day4_hum,value_day5_hum);
     updateUV(value_day0_UV);
 
+    hide(defaultCard);
     reveal(fiveDayCard);
     reveal(curDayCard);
 

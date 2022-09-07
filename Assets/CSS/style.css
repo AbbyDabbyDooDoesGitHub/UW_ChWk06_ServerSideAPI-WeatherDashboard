@@ -177,6 +177,14 @@ h4 {
   display: none;
 }
 
+#default-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  margin-top: 0%;
+}
+
 
 /* Makes it so there's no underline under the hyperlink */
 /* a {
