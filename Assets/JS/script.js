@@ -1,12 +1,6 @@
 // alert('JS File is connected');
 
-// YWVkYWY0ODNjMDIyNDNmMjhlMzRhZWVmZWUzYjAzNDU6ZGQzNzVlYmMtNjE4Yi00MDdlLWJhNDAtMzI1MWU3ZDE4NGY2
-// https://developer.myptv.com/Documentation/Geocoding%20API/QuickStart.htm
-// search https://api.myptv.com/geocoding/v1/locations/by-text?searchText=aan%27t%20verlaat%2033f%20&apiKey=YOUR_API_KEY
-// https://api.myptv.com/geocoding/v1/locations/by-text?searchText=Salem&countryFilter=US&apiKey=YWVkYWY0ODNjMDIyNDNmMjhlMzRhZWVmZWUzYjAzNDU6ZGQzNzVlYmMtNjE4Yi00MDdlLWJhNDAtMzI1MWU3ZDE4NGY2
-// https://api.myptv.com/geocoding/v1/locations/by-text?searchText=Las%20Vegas&countryFilter=US&apiKey=YWVkYWY0ODNjMDIyNDNmMjhlMzRhZWVmZWUzYjAzNDU6ZGQzNzVlYmMtNjE4Yi00MDdlLWJhNDAtMzI1MWU3ZDE4NGY2
-
-// ADDRESSES TO INDEX ITEMS
+// ADDRESSES TO INDEX ITEMS ------------------------------------------------------
 var searchBtn = document.getElementById("searchBtn");
 var errorText = document.getElementById("errorText");
 
@@ -57,16 +51,22 @@ var day5_temp = document.getElementById("day5-temp");
 var day5_wind = document.getElementById("day5-wind");
 var day5_hum  = document.getElementById("day5-humidity");
 
-// DO ON LOAD
+// ADD EVENT LISTENERS -----------------------------------------------------------
+searchBtn.addEventListener("click",function() {startSearch()});
+recent1.addEventListener("click",function() {startSearchFromRecent("recent1")});
+recent2.addEventListener("click",function() {startSearchFromRecent("recent2")});
+recent3.addEventListener("click",function() {startSearchFromRecent("recent3")});
+recent4.addEventListener("click",function() {startSearchFromRecent("recent4")});
+recent5.addEventListener("click",function() {startSearchFromRecent("recent5")});
+recent6.addEventListener("click",function() {startSearchFromRecent("recent6")});
+recent7.addEventListener("click",function() {startSearchFromRecent("recent7")});
+recent8.addEventListener("click",function() {startSearchFromRecent("recent8")});
+
+// DO ON LOAD --------------------------------------------------------------------
 updateRecents ();
 
-// FOR FORMATTING AND TESTING
-// reveal(fiveDayCard);
-// reveal(curDayCard);
-// hide(defaultCard);
-// processWeatherData (test);
-
-//   Test variable so I don't use up my API requests
+// FUNCTIONS FOR TESTING ---------------------------------------------------------
+// TEST VARIABLE FROM WEATHER API
 var test = {
 	"lat": 47.6036,
 	"lon": -122.3295,
@@ -412,17 +412,12 @@ var test = {
 	]
 };
 
-// ADD EVENT LISTENERS ---------------------------------------------------
-searchBtn.addEventListener("click",function() {startSearch()});
-recent1.addEventListener("click",function() {startSearchFromRecent("recent1")});
-recent2.addEventListener("click",function() {startSearchFromRecent("recent2")});
-recent3.addEventListener("click",function() {startSearchFromRecent("recent3")});
-recent4.addEventListener("click",function() {startSearchFromRecent("recent4")});
-recent5.addEventListener("click",function() {startSearchFromRecent("recent5")});
-recent6.addEventListener("click",function() {startSearchFromRecent("recent6")});
-recent7.addEventListener("click",function() {startSearchFromRecent("recent7")});
-recent8.addEventListener("click",function() {startSearchFromRecent("recent8")});
+// reveal(fiveDayCard);
+// reveal(curDayCard);
+// hide(defaultCard);
+// processWeatherData (test);
 
+// FUNCTIONS FOR FORMATTING ------------------------------------------------------
 // FUNCTION TO REVEAL BY CLASS OR ID
 function reveal (section) {
     // console.log("ran reveal()");
@@ -435,6 +430,8 @@ function hide (section) {
     section.style.display = "none";
 }
 
+// START FUNCTIONS ---------------------------------------------------------------
+// START SEARCH FROM ENTRY BUTTON
 function startSearch () {
 
     var ent_city  = document.getElementById("searchBox").value;
@@ -506,6 +503,22 @@ function startSearch () {
     }
 }
 
+// START SEARCH FROM RECENT SEARCHES
+function startSearchFromRecent(locationName) {
+
+    var recentClicked = JSON.parse(localStorage.getItem(locationName));
+
+    var selCity_formatted = recentClicked[0];
+    var selCity_lat       = recentClicked[1];
+    var selCity_long      = recentClicked[2];
+
+    getWeatherData(selCity_lat,selCity_long,selCity_formatted);
+    checkSearches(selCity_formatted,selCity_lat,selCity_long);
+
+}
+
+// PROCESS API DATA --------------------------------------------------------------
+// PROCESS DATA FROM GEOLOCATION API
 function processLocationData(data) {
 
     console.log("processLocationData ran");
@@ -525,27 +538,13 @@ function processLocationData(data) {
 
 }
 
-function startSearchFromRecent(locationName) {
-
-    var recentClicked = JSON.parse(localStorage.getItem(locationName));
-
-    var selCity_formatted = recentClicked[0];
-    var selCity_lat       = recentClicked[1];
-    var selCity_long      = recentClicked[2];
-
-    getWeatherData(selCity_lat,selCity_long,selCity_formatted);
-    checkSearches(selCity_formatted,selCity_lat,selCity_long);
-
-}
-
+// USE GEOLOCATION API DATA TO GET WEATHER API DATA
 function getWeatherData(selCity_lat,selCity_long,selCity_formatted) {
-
     // WEB LINK FOR API DOCS
     // https://openweathermap.org/api/one-call-api
 
     // one call api example
     // https://api.openweathermap.org/data/3.0/onecall?lat=33.44&lon=-94.04&exclude=minutely,hourly,alerts&units=imperial&appid=72384a45b07742dc70db33f0ab119992
-
 
     var weathReqURL        = "https://api.openweathermap.org/data/3.0/onecall?lat=" + selCity_lat + "&lon=" + selCity_long + "&exclude=minutely,hourly,alerts&units=imperial&appid=72384a45b07742dc70db33f0ab119992";
 
@@ -569,6 +568,7 @@ function getWeatherData(selCity_lat,selCity_long,selCity_formatted) {
 
 }
 
+// PROCESS RETURNED DATA FROM WEATHER API
 function processWeatherData (data) {
     console.log("processWeatherData ran");
     // console.log(data);
@@ -623,34 +623,33 @@ function processWeatherData (data) {
     updateHum(value_day0_hum,value_day1_hum,value_day2_hum,value_day3_hum,value_day4_hum,value_day5_hum);
     updateUV(value_day0_UV);
 
+    // HIDE DEFAULT IMAGE AND REVEAL WEATHER DATA
     hide(defaultCard);
     reveal(fiveDayCard);
     reveal(curDayCard);
 
 }
 
+// FILL INNER HTML WITH API RETURNED DATA ----------------------------------------
+// CONVERT UNIX TIMES FROM API TO MM/DD/YYYY
 function convertTimestamp(data,htmlLoc) {
     const unixTimestamp = data
-
     const milliseconds = unixTimestamp * 1000 // 1575909015000
-
     const dateObject = new Date(milliseconds)
 
     const dateFormat_month = dateObject.toLocaleString("en-US", {month: "numeric"}) 
-
     const dateFormat_day = dateObject.toLocaleString("en-US", {day: "numeric"})
-
     const dateFormat_year = dateObject.toLocaleString("en-US", {year: "numeric"})
 
     var resultDate = dateFormat_month + "/" + dateFormat_day + "/" + dateFormat_year;
+    htmlLoc.innerHTML = resultDate;
 
     // console.log("initial unix timestamp was " + unixTimestamp + " & the resultDate is " + resultDate);
 
-    htmlLoc.innerHTML = resultDate;
 }
 
+// UPDATE THE WEATHER ICONS
 function updateIcons(value_day0_img,value_day0_imgAlt,value_day1_img,value_day1_imgAlt,value_day2_img,value_day2_imgAlt,value_day3_img,value_day3_imgAlt,value_day4_img,value_day4_imgAlt,value_day5_img,value_day5_imgAlt) {
-
     var day0_imgString = "./Assets/Images/" + value_day0_img + ".png";
     var day1_imgString = "./Assets/Images/white_" + value_day1_img + ".png";
     var day2_imgString = "./Assets/Images/white_" + value_day2_img + ".png";
@@ -673,8 +672,8 @@ function updateIcons(value_day0_img,value_day0_imgAlt,value_day1_img,value_day1_
 
 }
 
+// UPDATE TEMP VALUES
 function updateTemp(value_day0_temp,value_day1_temp,value_day2_temp,value_day3_temp,value_day4_temp,value_day5_temp) {
-
     day0_temp.innerHTML = value_day0_temp;
     day1_temp.innerHTML = value_day1_temp;
     day2_temp.innerHTML = value_day2_temp;
@@ -684,8 +683,8 @@ function updateTemp(value_day0_temp,value_day1_temp,value_day2_temp,value_day3_t
 
 }
 
+// UPDATE WIND SPEEDS
 function updateWind(value_day0_wind,value_day1_wind,value_day2_wind,value_day3_wind,value_day4_wind,value_day5_wind) {
-
     day0_wind.innerHTML = value_day0_wind;
     day1_wind.innerHTML = value_day1_wind;
     day2_wind.innerHTML = value_day2_wind;
@@ -695,8 +694,8 @@ function updateWind(value_day0_wind,value_day1_wind,value_day2_wind,value_day3_w
 
 }
 
+// UPDATE HUMIDITY VALUES
 function updateHum(value_day0_hum,value_day1_hum,value_day2_hum,value_day3_hum,value_day4_hum,value_day5_hum) {
-
     day0_hum.innerHTML = value_day0_hum;
     day1_hum.innerHTML = value_day1_hum;
     day2_hum.innerHTML = value_day2_hum;
@@ -706,17 +705,16 @@ function updateHum(value_day0_hum,value_day1_hum,value_day2_hum,value_day3_hum,v
 
 }
 
+// UPDATE UV
 function updateUV(value_day0_UV) {
-
     day0_UV.innerHTML = value_day0_UV;
 
 }
 
 // LOCAL STORAGE STUFF -----------------------------------------------------------
-
+// CHECK RECENT SEARCHES FOR DUPLICATES & NULL VALUES
 function checkSearches(formattedAddress,lat,long){
-
-    console.log("checkSearches ran");
+    // console.log("checkSearches ran");
 
     var newSearch = [formattedAddress,lat,long];
     var recent1_LS = JSON.parse(localStorage.getItem("recent1"));
@@ -756,8 +754,8 @@ function checkSearches(formattedAddress,lat,long){
     
 }
 
+// MOVE MOST RECENT TO TOP OF LOCAL STORAGE, AVOID DUPLICATES
 function shuffleSearches(r1_LS,r2_LS,r3_LS,r4_LS,r5_LS,r6_LS,r7_LS,r8_LS) {
-
     if (r1_LS == null) {
         console.log("error: r1_LS == null");
 
@@ -819,8 +817,8 @@ function shuffleSearches(r1_LS,r2_LS,r3_LS,r4_LS,r5_LS,r6_LS,r7_LS,r8_LS) {
 
 }
 
+// UPDATE RECENT SEARCHES BASED ON LOCAL STORAGE, HIDE NULL VALUES
 function updateRecents () {
-
     var recent1_LS = JSON.parse(localStorage.getItem("recent1"));
     var recent2_LS = JSON.parse(localStorage.getItem("recent2"));
     var recent3_LS = JSON.parse(localStorage.getItem("recent3"));
