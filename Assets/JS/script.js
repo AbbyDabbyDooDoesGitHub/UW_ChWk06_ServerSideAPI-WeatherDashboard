@@ -554,15 +554,15 @@ function getWeatherData(selCity_lat,selCity_long,selCity_formatted) {
 
     console.log("weathFetchResults preFetch is: " + weathFetchResults);
 
-    fetch(weathReqURL, {
-        method: "GET",
-        headers: { apiKey: "72384a45b07742dc70db33f0ab119992", "Content-Type": "application/json",'Access-Control-Allow-Origin': '*' },
+
+    fetch(weathReqURL)
+    .then(response => {
+        return response.json();
     })
-    .then(response => response.json())
-    .then(json => weathFetchResults = (json.locations[0]))
-    .then(function () {
-        processWeatherData (weathFetchResults);
-    });
+    .then(function(response) {
+        console.log(response);
+        processWeatherData (response);
+    })
 
     selCity.innerHTML = selCity_formatted;
 
