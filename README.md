@@ -10,7 +10,11 @@ https://abbydabbydoodoesgithub.github.io/UW_ChWk06_ServerSideAPI-WeatherDashboar
 
 ## Notes
 
-<!-- Use this area to add personal notes on implementation, etc -->
+This application was coded from scratch. The html bones were roughed into place first, then I got the search box working with the geolocation API. Once that successfully parsed the formatted city name, latitude, and longitude, it would use that to get the weather data from the open weather API. 
+
+Local storage stores the recent searches as arrays with the formatted city name, latitude, and longitude so it only needs to make a weather API request and there's no need for an additional geolocation API call. 
+
+I included a state search box that isn't required, but it will allow for someone to get both Salem, OR and Salem, MA if desired, as opposed to just whatever the API thought was most likely. 
 
 ## User Story
 
@@ -49,6 +53,7 @@ THEN I am again presented with current and future conditions for that city
 - [jQuery Library](https://jquery.com/)
 
 ### Media
+- Default Image Visible Prior to Search: [Clouds Png vectors by Lovepik.com](https://lovepik.com/images/png-clouds.html)
 - 11d icon (thunderstorm): [lightning cloudy by reynaindra from NounProject.com](https://thenounproject.com/browse/icons/term/lightning-cloudy/")
 - 09d icon (drizzle): [showers by reynaindra from NounProject.com](https://thenounproject.com/browse/icons/term/showers/)
 - 10d icon (rain): [Rain by reynaindra from NounProject.com](https://thenounproject.com/browse/icons/term/rain/)
@@ -62,7 +67,6 @@ THEN I am again presented with current and future conditions for that city
 - 03n icon (clouds night): [Cloudy climate by icon 54 from NounProject.com](https://thenounproject.com/browse/icons/term/cloudy-climate/)
 - 04d icon (heavy clouds day): [Overcast clouds by icon 54 from NounProject.com](https://thenounproject.com/browse/icons/term/overcast-clouds/)
 - 04n icon (heavy clouds night): [Overcast clouds by icon 54 from NounProject.com](https://thenounproject.com/browse/icons/term/overcast-clouds/)
-- Default Image Visible Prior to Search: [Clouds Png vectors by Lovepik.com](https://lovepik.com/images/png-clouds.html)
 
 
 
