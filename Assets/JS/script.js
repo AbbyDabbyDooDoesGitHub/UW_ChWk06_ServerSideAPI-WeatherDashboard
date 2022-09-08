@@ -453,7 +453,7 @@ function startSearch () {
         // SET A TIMEOUT SO THE SUCCESS TEXT AND LINE GOES AWAY AFTER 1 SECOND
         setTimeout(() => {
             hide(errorText); 
-        }, 1000); // 👈️ time in milliseconds
+        }, 1250); // 👈️ time in milliseconds
 
     } else if (ent_city == null || ent_city == "") {
         console.log("no city entered. ent_city is " + ent_city + "& ent_state is " + ent_state);
