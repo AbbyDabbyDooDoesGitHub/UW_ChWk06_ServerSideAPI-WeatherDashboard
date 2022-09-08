@@ -12,9 +12,9 @@ https://abbydabbydoodoesgithub.github.io/UW_ChWk06_ServerSideAPI-WeatherDashboar
 
 This application was coded from scratch. The html bones were roughed into place first, then I got the search box working with the geolocation API. Once that successfully parsed the formatted city name, latitude, and longitude, it would use that to get the weather data from the open weather API. 
 
-Local storage stores the recent searches as arrays with the formatted city name, latitude, and longitude so it only needs to make a weather API request and there's no need for an additional geolocation API call. 
+Local storage stores the recent searches as arrays with the formatted city name, latitude, and longitude; this means it only needs to make a weather API request--no need for an additional geolocation API call if we already have that data!
 
-I included a state search box that isn't required, but it will allow for someone to get both Salem, OR and Salem, MA if desired, as opposed to just whatever the API thought was most likely. 
+I included a state search box: it's not required, but it will allow for someone to get both Salem, OR and Salem, MA if desired (as opposed to just whatever the API thought was most likely). 
 
 ## User Story
 
