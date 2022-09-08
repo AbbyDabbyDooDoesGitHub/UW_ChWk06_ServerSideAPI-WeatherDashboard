@@ -1,3 +1,5 @@
+/* MISC GENERAL FORMATTING ---------------------------------------------------- */
+/* HEADER */
 h1 {
   background-color: rgb(21, 21, 131);
   font-size: 35px;
@@ -5,41 +7,45 @@ h1 {
   padding: 15px;
   text-align: center;
   font-weight: bolder;
-  width: 98vw;
+  width: 100vw;
 }
 
+/* EVERYTHING BELOW THE HEADER */
 .main-display {
   display:inline-flex;
   padding: 0;
   margin: 0;
-  width: 98vw;
+  width: 100vw;
 }
 
+/* LEFT SIDE BELOW HEADER */
 .left-side-display {
   width: 35%;
+  min-width: 260px;
   padding: 10px;
-
-  /* background-color: blueviolet; */
 }
 
+/* RIGHT SIDE BELOW HEADER */
 .right-side-display {
   width: 65%;
   padding: 10px;
-
-  /* background-color: blueviolet; */
 }
 
+/* SEARCH BOX STUFF ----------------------------------------------------------- */
+/* SEARCH FOR A CITY */
 h2 {
   font-size: 25px;
   font-weight: bold;
 }
 
+/* SEARCH BOX FOR CITY */
 #searchBox {
   display: inline-flex;
   width:75%; 
   margin: 0px;
 }
 
+/* SEARCH BOX FOR STATE */
 #stateSearchBox {
   display: inline-flex;
   float: right;
@@ -47,6 +53,7 @@ h2 {
   margin: 0px;
 }
 
+/* ERROR TEXT FOR INCORRECT SEARCH */
 #errorText {
   margin-top: 10px;
   margin-bottom: 0%;
@@ -57,6 +64,7 @@ h2 {
   display: none;
 }
 
+/* BTN CLASS FORMATTING */
 .btn {
   background-color: rgb(168, 168, 168);
   color: black;
@@ -69,19 +77,23 @@ h2 {
   border: none;
 }
 
+/* COLOR CHANGE FOR BTN ON HOVER */
 .btn:hover {
   background-color: rgb(201, 201, 201);
 }
 
+/* SEARCH BTN SPECIFICALLY */
 #searchBtn {
   background-color: rgb(0, 132, 255);
   color: aliceblue;
 }
 
+/* SEARCH BTN COLOR CHANGE ON HOVER */
 #searchBtn:hover {
   background-color: rgb(75, 174, 231);
 }
 
+/* DIV LINE BELOW THE SEARCH BTN */
 #divLine {
   background-color: rgb(56, 56, 56);
   width: 100%;
@@ -89,32 +101,57 @@ h2 {
   margin-top: 15px;
 }
 
+/* P CLASS DEFAULT FORMATTING */
 p {
   display: inline-flex;
 }
 
-h3 {
+/* WEATHER BOARD SPECIFIC FORMATTING STUFF ------------------------------------ */
+/* H3 FORMATTING FOR CITY */
+#day0-title h3 {
   font-size: 20px;
   font-weight: bold;
+  padding-right: 5px;
 }
 
+/* KEEP CITY AND DAY INLINE */
 #day0-title {
   display: inline-flex;
 }
 
-#day0-title h3 {
-  padding-right: 5px;
+/* CURRENT DAY BOX */
+.location-overview {
+  border: 2px solid rgb(56, 56, 56);
+  border-radius: 5px;
+  padding: 10px;
+  padding-top: 15px;
+  margin-bottom: 10px;
 }
 
+#day0-UV {
+  /* DEFAULT */
+  background-color: rgb(194, 194, 194);
+
+  padding: 4px;
+  padding-left: 7px;
+  padding-right: 7px;
+  border-radius: 5px;
+}
+
+/* FIVE DAY FORECAST CARDS */
 .location-fiveDayForecastCards {
   display: flex;
   flex-wrap: wrap;
 }
 
+/* TITLE FOR FORECAST CARDS */
 #location-fiveDayForecastTitle {
+  font-size: 20px;
+  font-weight: bold;
   padding-left: 5px;
 }
 
+/* FORECAST CARDS SIZING AND COLORING */
 .forecastCard {
   background-color: rgb(21, 21, 131);
   margin: 5px;
@@ -124,27 +161,23 @@ h3 {
   min-width: 17%;
 }
 
+/* DATE TITLES */
 h4 {
   font-size: 14px;
   font-weight: bold;
 }
 
+/* TEXT ON FORECAST CARDS */
 .forecastCard p {
   font-size: 12px;
 }
 
-.location-overview {
-  border: 2px solid rgb(56, 56, 56);
-  border-radius: 5px;
-  padding: 10px;
-  padding-top: 15px;
-  margin-bottom: 10px;
-}
-
+/* SIZING DOWN MAX ICON WIDTH */
 .weatherIcon {
   max-width: 40px;
 }
 
+/* HIDE RECENT SEARCHES BY DEFAULT - JS WILL SHOW IF THERE IS A VALUE */
 #recentSearch1 {
   display: none;
 }
@@ -170,6 +203,7 @@ h4 {
   display: none;
 }
 
+/* HIDE WEATHER STUFF UNTIL A CITY IS SEARCHED */
 #location-fiveDayForecast {
   display: none;
 }
@@ -177,22 +211,51 @@ h4 {
   display: none;
 }
 
+/* DEFAULT IMG TO SHOW UP UNTIL CITY IS SEARCHED */
 #default-img {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 70%;
-  margin-top: 0%;
+  width: 80%;
+  margin-top: 20px;
 }
 
+/* MEDIA QUERIES -------------------------------------------------------------- */
 
-/* Makes it so there's no underline under the hyperlink */
-/* a {
-    text-decoration: none;
-  } */
+@media screen and (max-width: 790px) {
+  /* DEFAULT IMG TO SHOW UP UNTIL CITY IS SEARCHED */
+  #default-img {
+    width: 90%;
+    margin-top: 20px;
+  }
 
-/* Media Query Example */
-/* @media screen and (max-width: 992px) {
-  h2 {
-      font-size: 200%;
-  } */
+}
+
+@media screen and (max-width: 530px) {
+  /* EVERYTHING BELOW THE HEADER */
+  .main-display {
+    display: block;
+  }
+
+  /* LEFT SIDE BELOW HEADER */
+  .left-side-display {
+    width: 100%;
+  }
+
+  /* RIGHT SIDE BELOW HEADER */
+  .right-side-display {
+    width: 100%;
+  }
+
+  /* HIDE ALL RECENT SEARCHES ON SMALL SCREENS */
+  #allRecentSearches {
+    display: none;
+  }
+
+  /* DEFAULT IMG TO SHOW UP UNTIL CITY IS SEARCHED */
+  #default-img {
+    width: 80%;
+    margin-top: 5px;
+  }
+
+}

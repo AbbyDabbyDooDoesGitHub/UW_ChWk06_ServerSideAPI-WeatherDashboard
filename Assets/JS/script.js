@@ -709,6 +709,33 @@ function updateHum(value_day0_hum,value_day1_hum,value_day2_hum,value_day3_hum,v
 function updateUV(value_day0_UV) {
     day0_UV.innerHTML = value_day0_UV;
 
+    // UNCOMMENT BELOW TO TEST IF FUNCTION FOR UV
+    // value_day0_UV = 5.1;
+
+    if (value_day0_UV <= 2) {
+        day0_UV.style.backgroundColor = "rgb(45, 221, 75)";
+        console.log("UV is LOW at " + value_day0_UV);
+        // LOW
+        // background-color: rgb(45, 221, 75);
+
+    } else if (value_day0_UV <= 5) {
+        day0_UV.style.backgroundColor = "rgb(255, 182, 46)";
+        console.log("UV is MODERATE at " + value_day0_UV);
+        // MODERATE
+        // background-color: rgb(255, 182, 46);
+
+    } else if (value_day0_UV > 5) {
+        // day0_UV.style.backgroundColor = "rgb(252, 111, 55)";
+        day0_UV.style.backgroundColor = "rgb(255, 0, 0)";
+        console.log("UV is HIGH at " + value_day0_UV);
+        // HIGH 
+        // background-color: rgb(252, 111, 55);
+        
+    } else {
+        console.log("ERROR FOR UV VALUE " + value_day0_UV);
+
+    }
+
 }
 
 // LOCAL STORAGE STUFF -----------------------------------------------------------
