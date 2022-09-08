@@ -66,7 +66,6 @@ h2 {
 
 /* BTN CLASS FORMATTING */
 .btn {
-  background-color: rgb(168, 168, 168);
   color: black;
   margin-top: 15px;
   font-size: 18px;
@@ -77,8 +76,55 @@ h2 {
   border: none;
 }
 
-/* COLOR CHANGE FOR BTN ON HOVER */
-.btn:hover {
+/* BACKGROUND COLOR AND COLOR CHANGE FOR BTN ON HOVER */
+/* Initially this was done with classes, but the
+buttons would stay white after clicking for some reason */
+#recentSearch1 {
+  background-color: rgb(168, 168, 168);
+}
+#recentSearch1:hover {
+  background-color: rgb(201, 201, 201);
+}
+#recentSearch2 {
+  background-color: rgb(168, 168, 168);
+}
+#recentSearch2:hover {
+  background-color: rgb(201, 201, 201);
+}
+#recentSearch3 {
+  background-color: rgb(168, 168, 168);
+}
+#recentSearch3:hover {
+  background-color: rgb(201, 201, 201);
+}
+#recentSearch4 {
+  background-color: rgb(168, 168, 168);
+}
+#recentSearch4:hover {
+  background-color: rgb(201, 201, 201);
+}
+#recentSearch5 {
+  background-color: rgb(168, 168, 168);
+}
+#recentSearch5:hover {
+  background-color: rgb(201, 201, 201);
+}
+#recentSearch6 {
+  background-color: rgb(168, 168, 168);
+}
+#recentSearch6:hover {
+  background-color: rgb(201, 201, 201);
+}
+#recentSearch7 {
+  background-color: rgb(168, 168, 168);
+}
+#recentSearch7:hover {
+  background-color: rgb(201, 201, 201);
+}
+#recentSearch8 {
+  background-color: rgb(168, 168, 168);
+}
+#recentSearch8:hover {
   background-color: rgb(201, 201, 201);
 }
 
