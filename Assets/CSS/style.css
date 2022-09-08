@@ -1,7 +1,7 @@
 /* MISC GENERAL FORMATTING ---------------------------------------------------- */
 /* HEADER */
 h1 {
-  background-color: rgb(21, 21, 131);
+  background-image: linear-gradient(to right, rgb(65, 133, 197) , rgb(23, 9, 73));
   font-size: 35px;
   color: aliceblue;
   padding: 15px;
@@ -199,7 +199,7 @@ p {
 
 /* FORECAST CARDS SIZING AND COLORING */
 .forecastCard {
-  background-color: rgb(21, 21, 131);
+  background-color: rgb(49, 67, 88);
   margin: 5px;
   padding: 5px;
   color:aliceblue;
