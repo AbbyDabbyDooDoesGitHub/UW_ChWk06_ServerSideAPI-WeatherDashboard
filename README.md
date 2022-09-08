@@ -3,10 +3,10 @@
 Developers are often tasked with retrieving data from another application's API and using it in the context of their own. Build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS. Use the [OpenWeather One Call API](https://openweathermap.org/api/one-call-api) to retrieve weather data for cities. Use `localStorage` to store any persistent data. 
 
 ### Link to Web App: 
-<!-- LINK TO DEPLOYMENT HERE -->
+https://abbydabbydoodoesgithub.github.io/UW_ChWk06_ServerSideAPI-WeatherDashboard/
 
 ### App Preview:
-<!-- Replace with path to screenshot   ![My Password Generator Screenshot](./Assets/Images/MyPasswordGeneratorScreenShot.PNG "My Password Generator Screenshot") -->
+![My Weather Dashboard Screenshot](./Assets/Images/MyAppScreenshot_WeatherDashboard.png "My Weather Dashboard Screenshot")
 
 ## Notes
 
